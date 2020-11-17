@@ -87,7 +87,7 @@ const SigUp: React.FC = () => {
 
         Alert.alert(
           'Solicitação realizada com sucesso',
-          `${data.name}, assim que realizarmos seu caastro voce recebera suas credencias no seguinte email ${data.email}`,
+          `${data.name}, assim que realizarmos seu cadastro voce recebera suas credencias no seguinte email ${data.email}`,
         );
 
         navigation.navigate('SignIn');
@@ -150,6 +150,7 @@ const SigUp: React.FC = () => {
                 keyboardType="email-address"
                 autoCapitalize="none"
                 autoCorrect={false}
+                autoCompleteType="off"
                 name="email"
                 icon="mail"
                 placeholder="E-mail"
@@ -190,7 +191,7 @@ const SigUp: React.FC = () => {
               navigation.goBack();
             }}
           >
-            <Icon size={20} name="arrow-left" color="#232129" />
+            <Icon size={20} name="arrow-left" color="#3333" />
             <CreateAcountButtonText>Voltar</CreateAcountButtonText>
           </CreateAcountButton>
         )}

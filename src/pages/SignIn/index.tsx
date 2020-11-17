@@ -181,7 +181,7 @@ const SigIn: React.FC = () => {
               navigation.navigate('SignUp');
             }}
           >
-            <Icon size={20} name="log-in" color="#232129" />
+            <Icon size={20} name="log-in" color="#3333" />
             <CreateAcountButtonText>Solictar Cadastro</CreateAcountButtonText>
           </CreateAcountButton>
         )}
