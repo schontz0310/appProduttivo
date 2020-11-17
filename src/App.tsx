@@ -1,6 +1,7 @@
 import 'react-native-gesture-handler';
+import SplashScreen from 'react-native-splash-screen';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import {StatusBar, View} from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -8,6 +9,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import Routes from './routes/index';
 
 const App: React.FC = () => {
+
+  useEffect(()=>{
+    SplashScreen.hide()
+  },[])
+
   return (
 
     <NavigationContainer>
