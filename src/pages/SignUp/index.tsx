@@ -118,7 +118,7 @@ const SigUp: React.FC = () => {
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
           enabled
         >
-          <BackgroundImage
+          {/*<BackgroundImage
             source={backgroundImage}
             imageStyle={{
               left: 15,
@@ -126,10 +126,10 @@ const SigUp: React.FC = () => {
               width: 370,
               height: 550,
             }}
-          />
+          />*/}
           <Container>
             <Image source={logoImg} />
-            <Title>Solicite seu cadastro</Title>
+            <Title>Cadastro</Title>
             <Form
               ref={formRef}
               onSubmit={handleSignUp}
@@ -191,7 +191,7 @@ const SigUp: React.FC = () => {
               navigation.goBack();
             }}
           >
-            <Icon size={20} name="arrow-left" color="#3333" />
+            <Icon size={20} name="arrow-left" color="#636363" />
             <CreateAcountButtonText>Voltar</CreateAcountButtonText>
           </CreateAcountButton>
         )}

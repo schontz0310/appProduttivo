@@ -114,7 +114,7 @@ const SigIn: React.FC = () => {
             keyboardShouldPersistTaps="handled"
             contentContainerStyle={{ flex: 1 }}
           >
-
+            {/*
             <BackgroundImage
             source={backgroundImage}
             imageStyle={{
@@ -123,7 +123,7 @@ const SigIn: React.FC = () => {
               width: 370,
               height: 550,
             }}
-          />
+          /> */}
 
             <Container>
               <Image source={logoImg} />
@@ -181,7 +181,7 @@ const SigIn: React.FC = () => {
               navigation.navigate('SignUp');
             }}
           >
-            <Icon size={20} name="log-in" color="#3333" />
+            <Icon size={20} name="log-in" color="#636363" />
             <CreateAcountButtonText>Solictar Cadastro</CreateAcountButtonText>
           </CreateAcountButton>
         )}
