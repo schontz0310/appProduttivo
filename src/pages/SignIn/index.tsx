@@ -78,8 +78,8 @@ const SigIn: React.FC = () => {
 
         const schemaValidation = Yup.object().shape({
           email: Yup.string()
-            .required('E-mail obrigatório')
-            .email('Digite um e-mail válido'),
+            .required('E-mail obrigatório'),
+            //.email('Digite um e-mail válido'),
           password: Yup.string().min(6, 'minimo de 6 dígitos'),
         });
         await schemaValidation.validate(data, {

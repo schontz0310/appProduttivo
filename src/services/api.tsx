@@ -2,7 +2,7 @@ import { Platform } from 'react-native';
 import axios from 'axios';
 
 const url =
-  Platform.OS === 'ios' ? 'http://localhost:3333' : 'http://10.0.2.2:3333';
+  Platform.OS === 'ios' ? 'http://jmsoft.dyndns.info:8050/api' : 'http://jmsoft.dyndns.info:8050/api';
 
 const api = axios.create({
   baseURL: url,
