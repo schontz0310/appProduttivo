@@ -10,6 +10,9 @@ import {
   Alert,
   ScrollView,
 } from 'react-native';
+
+import {useAuth} from '../../hook/auth'
+
 import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
 import { Form } from '@unform/mobile';
@@ -41,6 +44,11 @@ const SigIn: React.FC = () => {
   const passwordInputRef = useRef<TextInput>(null);
   const formRef = useRef<FormHandles>(null);
   const navigation = useNavigation();
+
+  const {signIn, user} = useAuth();
+
+  console.log(user);
+
   const [showSignInButton, setShowSignInButton] = useState(true);
 
   useEffect(() => {
@@ -78,10 +86,10 @@ const SigIn: React.FC = () => {
           abortEarly: false,
         });
 
-        /*await signIn({
+        await signIn({
           email: data.email,
           password: data.password,
-        });*/
+        });
 
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
@@ -98,7 +106,7 @@ const SigIn: React.FC = () => {
         );
       }
     },
-    [],
+    [signIn],
   );
 
   return (

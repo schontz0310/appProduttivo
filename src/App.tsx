@@ -10,6 +10,8 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import Routes from './routes/index';
 
+import AppProvider from './hook'
+
 import {
   BackgroundImage
 } from './pages/SignIn/styles';
@@ -26,9 +28,11 @@ const App: React.FC = () => {
 
     <NavigationContainer>
     <StatusBar translucent barStyle="light-content" backgroundColor="#333333" />
+    <AppProvider>
     <View style={{ flex: 1 }}>
       <Routes />
     </View>
+    </AppProvider>
     <BackgroundImage
             source={backgroundImage}
             imageStyle={{
