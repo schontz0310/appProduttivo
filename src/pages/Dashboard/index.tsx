@@ -5,10 +5,11 @@ import {Container, Title} from './styles'
 import {useAuth} from '../../hook/auth'
 
 import api from '../../services/api'
+import { Button } from 'react-native';
 
 const Dashboard: React.FC = () => {
 
-  const {user} = useAuth();
+  const {user, signOut} = useAuth();
 
   return(
     <>
@@ -19,6 +20,7 @@ const Dashboard: React.FC = () => {
         <Title>{"nome = " + user.name}</Title>
         <Title>{"email = " + user.email}</Title>
         <Title>{"avatar = " + user.avatar_url}</Title>
+        <Button onPress={signOut} title='Sair' ></Button>
     </Container>
     </>
   )
