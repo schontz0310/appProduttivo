@@ -1,40 +1,58 @@
-import React, { useCallback } from 'react';
-import {BarCodeReadEvent, RNCamera} from 'react-native-camera';
+import React, { useCallback, useRef, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import {BarCodeReadEvent, RNCamera, TakePictureOptions} from 'react-native-camera';
 import BarcodeMask from 'react-native-barcode-mask';
 
-import {UpperSection, LowerSection} from './styles'
-import { View, TextInput, Vibration } from 'react-native';
+import { View, TextInput, Vibration, Text, Alert } from 'react-native';
 import { Container } from '../Dashboard/styles';
-import { StatusBar } from 'react-native';
-import { SafeAreaView } from 'react-native';
 import { StyleSheet } from 'react-native';
+import DrawerLayout from 'react-native-gesture-handler/DrawerLayout';
+import { cos } from 'react-native-reanimated';
 
-
+interface ScannerDataProps{
+  app_id: number;
+  dev_id: number;
+}
 
 const Dashboard: React.FC = () => {
+  const [activate, setactivate] = useState<Boolean>(true)
+  const navigate = useNavigation();
 
-  const showData = useCallback((scanned: BarCodeReadEvent)=>{
+
+  const showData = (scanned: BarCodeReadEvent)=>{
     Vibration.vibrate(300);
-    console.log(scanned.data);
-  },[])
+    console.log(scanned.data)
+    const log: ScannerDataProps = JSON.parse(scanned.data)
+    console.log(log.app_id)
+    navigate.navigate('Details', log);
+
+  }
+
   return(
     <>
       <Container>
-        <RNCamera
-          onBarCodeRead={(data)=>showData(data)}
-          style={styles.preview}
-          type={RNCamera.Constants.Type.back}
-          flashMode={RNCamera.Constants.FlashMode.on}
-          androidCameraPermissionOptions={{
-            title: 'Permission to use camera',
-            message: 'We need your permission to use your camera',
-            buttonPositive: 'Ok',
-            buttonNegative: 'Cancel',
-          }}
 
+        <RNCamera
+          onBarCodeRead={(data) => showData(data)}
+          style={styles.preview}
+          type={'back'}
+          useCamera2Api={true}
         >
           <BarcodeMask
-          width={300} height={300} showAnimatedLine={false} outerMaskOpacity={0.8}
+          width='85%'
+          height='40%'
+          edgeBorderWidth={8}
+          edgeWidth={30}
+          edgeHeight={30}
+          edgeRadius={12}
+          edgeColor='#3b9900'
+          showAnimatedLine={true}
+          animatedLineColor='#3b9900'
+          animatedLineWidth='80%'
+          animatedLineHeight={6}
+          lineAnimationDuration={800}
+          outerMaskOpacity={0.8}
+
           />
         </RNCamera>
       </Container>
@@ -43,28 +61,20 @@ const Dashboard: React.FC = () => {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: 'black',
-  },
+
   preview: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     width:'120%'
+  },
+  stop: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width:'0%'
+  },
 
-  },
-  capture: {
-    flex: 0,
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    alignSelf: 'center',
-  },
 });
 
 export default Dashboard;
-function data(data: any): ((event: import("react-native-camera").BarCodeReadEvent) => void) | undefined {
-  throw new Error('Function not implemented.');
-}
-

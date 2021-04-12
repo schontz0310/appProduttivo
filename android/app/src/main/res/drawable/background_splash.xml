@@ -7,7 +7,7 @@
     -->
     <item
         android:drawable="@mipmap/splash_icon"
-        android:height="175dp"
+        android:height="150dp"
         android:width="300dp"
         android:gravity="center"
         />
